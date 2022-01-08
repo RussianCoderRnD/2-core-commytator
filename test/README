@@ -1,0 +1,23 @@
+class Display0
+{
+public:
+    uint8_t x;
+    uint8_t y;
+    uint8_t volts;
+    bool size_font;
+    Display0(uint8_t _x = 0, uint8_t _y = 0, bool _size_font = 2, uint8_t _volts = 0)
+    {
+        x = _x;
+        y = _y;
+        volts = _volts;
+        size_font = _size_font;
+        oled.setCursorXY(_x + 12, _y); // курсор в (пиксель X, строка Y)
+        oled.setScale(_size_font);
+        oled.print("  ");
+        oled.setCursorXY(_x, _y); // курсор в (пиксель X, строка Y)
+        oled.setScale(_size_font);
+        oled.print(_volts);
+    }
+};
+
+Display0 Line_A;
