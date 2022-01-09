@@ -126,7 +126,6 @@ void loop()
         oled.print("Line A:");
         Display(setX + 87, setY + 1, 2, valA);
     }
-
     if (statusLineB == 10)
     {
         Blynk.virtualWrite(V5, 1);
@@ -143,7 +142,6 @@ void loop()
         oled.print("Line B:");
         Display(setX + 87, setY + 24, 2, valB);
     }
-
     if (statusLineC == HIGH)
     {
         Blynk.virtualWrite(V6, 1);
@@ -160,100 +158,5 @@ void loop()
         oled.print("Line C:");
         Display(setX + 87, setY + 48, 2, valC);
     }
-
-    // Display printDisplayvalA(1, 1, 2, valA, 255);
-    //  Display printDisplayvalB(1, 3, 2, valB, 255);
-    //   Display printDisplayvalC(1, 5, 2, valC, 255);
-
     BlynkArguments();
 }
-/*
-class Display
-{
-public:
-    Display(int x, int y, int size_font, int volts, int bright = 255)
-    {
-        _x = x;
-        _y = y;
-        _size_font = size_font;
-        _volts = volts;
-        _bright = bright;
-    }
-
-private:
-    int _x;
-    int _y;
-    int _size_font;
-    int _volts;
-    int _bright;
-};
-*/
-
-/*
-class Display
-{
-public:
-    Display(int x, int y, int size_font, int volts, int bright = 255);
-    void setX(int x);
-    void setY(int y);
-    void setSize_font(int size_font);
-    void setVolts(int volts);
-    void setBright(int bright);
-    int getX();
-    int getY();
-    int getSize_font();
-    int getVolts();
-    int getBright();
-
-private:
-    int _x;
-    int _y;
-    int _size_font;
-    int _volts;
-    int _bright;
-};
-// реализация методов
-Display::Display(int x, int y, int size_font, int volts, int bright)
-{ // конструктор
-    _x = x;
-    _y = y;
-    _size_font = size_font;
-    _volts = volts;
-    _bright = bright;
-}
-
-void Display::setX(int x) { _x = x; }
-void Display::setY(int y) { _y = y; }
-void Display::setSize_font(int size_font) { _size_font = size_font; }
-void Display::setVolts(int volts) { _volts = volts; }
-void Display::setBright(int bright) { _bright = bright; }
-
-int Display::getX() { return _x; }
-int Display::getY() { return _y; }
-int Display::getSize_font() { return _size_font; }
-int Display::getVolts() { return _volts; }
-int Display::getBright() { return _bright; }
-
-*/
-
-/*
-
-
-
-    Display printDisplay(1, 1, 2, valA, "Line A: ", 255);
-    Display printDisplay(1, 3, 2, valB, "Line B: ", 255);
-    Display printDisplay(1, 4, 2, valC, "Line C: ", 255);
-
-    if (digitalRead(LineA_from_coreOne == HIGH))
-    {
-        Display printDisplay(1, 1, 3, valA, "Line A: ", 255);
-    }
-    if (digitalRead(LineB_from_coreOne == HIGH))
-    {
-        Display printDisplay(1, 1, 3, valA, "Line B: ", 255);
-    }
-    if (digitalRead(LineC_from_coreOne == HIGH))
-    {
-        Display printDisplay(1, 1, 3, valA, "Line C: ", 255);
-    }
-*/
