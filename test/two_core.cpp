@@ -17,9 +17,9 @@
 #define LineA A1           // входной PIN LineA
 #define LineB A2           // входной PIN LineB
 #define LineC A3           // входной PIN LineC
-#define OUTLineA 10        // выходной PIN LineA
+#define OUTLineA 12        // выходной PIN LineA
 #define OUTLineB 11        // выходной PIN LineB
-#define OUTLineC 12        // выходной PIN LineC
+#define OUTLineC 10        // выходной PIN LineC
 #define OUTLineA_oneCore 9 // выходной PIN LineA
 #define OUTLineB_oneCore 8 // выходной PIN LineB
 #define OUTLineC_oneCore 7 // выходной PIN LineC
@@ -115,15 +115,18 @@ void loop()
     if (valA < lowVolts || valA > hiVolts)
     {
         digitalWrite(OUTLineA, LOW);
+        digitalWrite(OUTLineA_oneCore, LOW);
     }
 
     if (valB < lowVolts || valB > hiVolts)
     {
         digitalWrite(OUTLineB, LOW);
+        digitalWrite(OUTLineB_oneCore, LOW);
     }
 
     if (valC < lowVolts || valC > hiVolts)
     {
         digitalWrite(OUTLineC, LOW);
+        digitalWrite(OUTLineC_oneCore, LOW);
     }
 }
