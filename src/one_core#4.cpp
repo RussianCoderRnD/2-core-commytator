@@ -82,7 +82,7 @@ void Line_A()
 {
     valA = voltageSensorLineA.getVoltageAC(50) * 5;        // считывание пораметра с LineA и сохранение его в valA
     boolean statusLineA = digitalRead(LineA_from_coreOne); // сичтывание значения состояния фазы с PIN-а
-    if (statusLineA == HIGH)
+    if (statusLineA)
     {
         Blynk.virtualWrite(V4, 1);
         oled.invertText(true); // инвертируй текст!
@@ -100,7 +100,7 @@ void Line_B()
 {
     valB = voltageSensorLineB.getVoltageAC(50) * 5;        // считывание пораметра с LineB и сохранение его в valB
     boolean statusLineB = digitalRead(LineB_from_coreOne); // считывания значения состояния фазы с PIN-а
-    if (statusLineB == HIGH)
+    if (statusLineB)
     {
         Blynk.virtualWrite(V5, 1);
         oled.invertText(true); // инвертируй текст!
@@ -118,7 +118,7 @@ void Line_C()
 {
     valC = voltageSensorLineC.getVoltageAC(50) * 5;        // считывание пораметра с LineC и сохранение его в valC
     boolean statusLineC = digitalRead(LineC_from_coreOne); // считывание значения состояния фазы с PIN-а
-    if (statusLineC == HIGH)
+    if (statusLineC)
     {
         Blynk.virtualWrite(V6, 1);
         oled.invertText(true); // инвертируй текст!
