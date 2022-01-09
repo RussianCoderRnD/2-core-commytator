@@ -77,6 +77,60 @@ void StartDisplay2()
     delay(2000);
     oled.clear(); // очистить дисплей
 }
+//!======================= Line A: ========================================
+void Line_A()
+{
+    valA = voltageSensorLineA.getVoltageAC(50) * 5;        // считывание пораметра с LineA и сохранение его в valA
+    boolean statusLineA = digitalRead(LineA_from_coreOne); // сичтывание значения состояния фазы с PIN-а
+    if (statusLineA == HIGH)
+    {
+        Blynk.virtualWrite(V4, 1);
+        oled.invertText(true); // инвертируй текст!
+        MyDis.myDisplay(setX, setY + 1, 2, valA, "Line A:");
+    }
+    else
+    {
+        Blynk.virtualWrite(V4, 0);
+        oled.invertText(false); // инвертируй текст!
+        MyDis.myDisplay(setX, setY + 1, 2, valA, "Line A:");
+    }
+}
+//!======================= Line B: ========================================
+void Line_B()
+{
+    valB = voltageSensorLineB.getVoltageAC(50) * 5;        // считывание пораметра с LineB и сохранение его в valB
+    boolean statusLineB = digitalRead(LineB_from_coreOne); // считывания значения состояния фазы с PIN-а
+    if (statusLineB == HIGH)
+    {
+        Blynk.virtualWrite(V5, 1);
+        oled.invertText(true); // инвертируй текст!
+        MyDis.myDisplay(setX, setY + 24, 2, valB, "Line B:");
+    }
+    else
+    {
+        Blynk.virtualWrite(V5, 0);
+        oled.invertText(false); // инвертируй текст!
+        MyDis.myDisplay(setX, setY + 24, 2, valB, "Line B:");
+    }
+}
+//!======================= Line C: ========================================
+void Line_C()
+{
+    valC = voltageSensorLineC.getVoltageAC(50) * 5;        // считывание пораметра с LineC и сохранение его в valC
+    boolean statusLineC = digitalRead(LineC_from_coreOne); // считывание значения состояния фазы с PIN-а
+    if (statusLineC == HIGH)
+    {
+        Blynk.virtualWrite(V6, 1);
+        oled.invertText(true); // инвертируй текст!
+        MyDis.myDisplay(setX, setY + 48, 2, valC, "Line C:");
+    }
+    else
+    {
+        Blynk.virtualWrite(V6, 0);
+        oled.invertText(false); // инвертируй текст!
+        MyDis.myDisplay(setX, setY + 48, 2, valC, "Line C:");
+    }
+}
 //!=======================void setup()======================================
 void setup()
 {
@@ -100,50 +154,8 @@ void setup()
 //!=========================void loop()=====================================
 void loop()
 {
-    valA = voltageSensorLineA.getVoltageAC(50) * 5;        // считывание пораметра с LineA и сохранение его в valA
-    valB = voltageSensorLineB.getVoltageAC(50) * 5;        // считывание пораметра с LineB и сохранение его в valB
-    valC = voltageSensorLineC.getVoltageAC(50) * 5;        // считывание пораметра с LineC и сохранение его в valC
-    boolean statusLineA = digitalRead(LineA_from_coreOne); // сичтывание значения состояния фазы с PIN-а
-    boolean statusLineB = digitalRead(LineB_from_coreOne); // считывания значения состояния фазы с PIN-а
-    boolean statusLineC = digitalRead(LineC_from_coreOne); // считывание значения состояния фазы с PIN-а
-    Serial.println(String("statusLineA ") + statusLineA + ("  statusLineB ") + statusLineB + ("  statusLineC ") + statusLineC);
-    //!----------- Логка выбора фазы ----------------------------------------------
-    if (statusLineA == HIGH)
-    {
-        Blynk.virtualWrite(V4, 1);
-        oled.invertText(true); // инвертируй текст!
-        MyDis.myDisplay(setX, setY + 1, 2, valA, "Line A:");
-    }
-    else
-    {
-        Blynk.virtualWrite(V4, 0);
-        oled.invertText(false); // инвертируй текст!
-        MyDis.myDisplay(setX, setY + 1, 2, valA, "Line A:");
-    }
-    if (statusLineB == HIGH)
-    {
-        Blynk.virtualWrite(V5, 1);
-        oled.invertText(true); // инвертируй текст!
-        MyDis.myDisplay(setX, setY + 24, 2, valB, "Line B:");
-    }
-    else
-    {
-        Blynk.virtualWrite(V5, 0);
-        oled.invertText(false); // инвертируй текст!
-        MyDis.myDisplay(setX, setY + 24, 2, valB, "Line B:");
-    }
-
-    if (statusLineC == HIGH)
-    {
-        Blynk.virtualWrite(V6, 1);
-        oled.invertText(true); // инвертируй текст!
-        MyDis.myDisplay(setX, setY + 48, 2, valC, "Line C:");
-    }
-    else
-    {
-        Blynk.virtualWrite(V6, 0);
-        oled.invertText(false); // инвертируй текст!
-        MyDis.myDisplay(setX, setY + 48, 2, valC, "Line C:");
-    }
+    Line_A();
+    Line_B();
+    Line_C();
     BlynkArguments();
 }
